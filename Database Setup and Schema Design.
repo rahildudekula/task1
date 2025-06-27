@@ -1,0 +1,30 @@
+-- Create database
+CREATE DATABASE LibrarySystem;
+
+-- Use that database
+USE LibrarySystem;
+
+-- Table for Students
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    class VARCHAR(20)
+);
+
+-- Table for Books
+CREATE TABLE Books (
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(100),
+    author VARCHAR(100)
+);
+
+-- Table for Borrow Records
+CREATE TABLE BorrowRecords (
+    borrow_id INT PRIMARY KEY AUTO_INCREMENT,
+    student_id INT,
+    book_id INT,
+    borrow_date DATE,
+    return_date DATE,
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
+);
